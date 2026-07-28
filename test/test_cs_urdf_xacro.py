@@ -15,7 +15,7 @@ def test_cs_urdf_xacro():
     safety_pos_margin = "0.15"
     safety_k_position = "20"
     # General Arguments
-    description_package = "eli_cs_robot_description"
+    description_package = "elite_robots_description"
     description_file = "cs.urdf.xacro"
     prefix = '""'
 

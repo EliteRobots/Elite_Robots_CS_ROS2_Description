@@ -3,7 +3,7 @@
 English | [中文](README_CN.md)
 
 This repository provides the ROS 2 description package for Elite Robots CS and
-LS series robots. The package is named `eli_cs_robot_description` and includes
+LS series robots. The package is named `elite_robots_description` and includes
 Xacro/URDF models, joint limits, kinematic and physical parameters, visual and
 collision meshes, and a launch file for viewing the robots in RViz2.
 
@@ -37,7 +37,7 @@ git clone <repository-url> Elite_Robots_CS_ROS2_Description
 
 cd ~/elite_ros_ws
 rosdep install --from-paths src --ignore-src -r -y
-colcon build --symlink-install --packages-select eli_cs_robot_description
+colcon build --symlink-install --packages-select elite_robots_description
 source install/setup.bash
 ```
 
@@ -49,14 +49,14 @@ the workspace root.
 The `cs_type` argument is required. For example, to view a CS63:
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs63
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs63
 ```
 
 Replace the model argument to view another supported robot:
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs620
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs520h
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs620
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs520h
 ```
 
 After launching, use the Joint State Publisher GUI to adjust the joint
@@ -71,13 +71,13 @@ positions and inspect the model and TF tree in RViz2.
 | `safety_pos_margin` | `0.15` | Safety margin from the lower and upper joint limits |
 | `safety_k_position` | `20` | Position gain used by the safety controller |
 | `tf_prefix` | Empty | Prefix for TF frames and joint names in multi-robot setups |
-| `description_package` | `eli_cs_robot_description` | ROS 2 package containing the description |
+| `description_package` | `elite_robots_description` | ROS 2 package containing the description |
 | `description_file` | `cs.urdf.xacro` | Description file to load |
 
 For example, to use a TF prefix and disable safety soft limits:
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py \
+ros2 launch elite_robots_description view_cs.launch.py \
   cs_type:=cs66 \
   tf_prefix:=robot1_ \
   safety_limits:=false
@@ -88,7 +88,7 @@ ros2 launch eli_cs_robot_description view_cs.launch.py \
 After building and sourcing the workspace, expand the Xacro file directly:
 
 ```bash
-xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_description/urdf/cs.urdf.xacro" \
+xacro "$(ros2 pkg prefix elite_robots_description)/share/elite_robots_description/urdf/cs.urdf.xacro" \
   cs_type:=cs63 \
   name:=cs63 \
   > /tmp/cs63.urdf
@@ -97,7 +97,7 @@ xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_descriptio
 Use the five-axis entry point for `cs520h`:
 
 ```bash
-xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_description/urdf_5f/cs.urdf.xacro" \
+xacro "$(ros2 pkg prefix elite_robots_description)/share/elite_robots_description/urdf_5f/cs.urdf.xacro" \
   cs_type:=cs520h \
   name:=cs520h \
   > /tmp/cs520h.urdf
@@ -138,7 +138,7 @@ Initial joint positions for simulation are stored in
 Run the tests from the workspace root:
 
 ```bash
-colcon test --packages-select eli_cs_robot_description
+colcon test --packages-select elite_robots_description
 colcon test-result --verbose
 ```
 

@@ -3,7 +3,7 @@
 [English](README.md) | 中文
 
 本仓库提供 Elite Robots CS/LS 系列机器人的 ROS 2 描述包，包名为
-`eli_cs_robot_description`。内容包括 Xacro/URDF 模型、关节限制、运动学与物理参数、
+`elite_robots_description`。内容包括 Xacro/URDF 模型、关节限制、运动学与物理参数、
 可视化及碰撞网格，以及用于 RViz2 预览机器人的启动文件。
 
 ## 支持的机器人
@@ -35,7 +35,7 @@ git clone <repository-url> Elite_Robots_CS_ROS2_Description
 
 cd ~/elite_ros_ws
 rosdep install --from-paths src --ignore-src -r -y
-colcon build --symlink-install --packages-select eli_cs_robot_description
+colcon build --symlink-install --packages-select elite_robots_description
 source install/setup.bash
 ```
 
@@ -46,14 +46,14 @@ source install/setup.bash
 启动时必须通过 `cs_type` 指定机器人型号。例如查看 CS63：
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs63
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs63
 ```
 
 查看其他型号时替换参数即可：
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs620
-ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs520h
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs620
+ros2 launch elite_robots_description view_cs.launch.py cs_type:=cs520h
 ```
 
 启动后可使用 Joint State Publisher GUI 调整关节角度，并在 RViz2 中观察模型和 TF。
@@ -67,13 +67,13 @@ ros2 launch eli_cs_robot_description view_cs.launch.py cs_type:=cs520h
 | `safety_pos_margin` | `0.15` | 距离关节上下限的安全裕量 |
 | `safety_k_position` | `20` | 安全控制器的位置增益 |
 | `tf_prefix` | 空 | TF 与关节名称前缀，适用于多机器人场景 |
-| `description_package` | `eli_cs_robot_description` | 提供描述文件的 ROS 2 包 |
+| `description_package` | `elite_robots_description` | 提供描述文件的 ROS 2 包 |
 | `description_file` | `cs.urdf.xacro` | 要加载的描述文件 |
 
 例如，使用 TF 前缀并关闭安全软限位：
 
 ```bash
-ros2 launch eli_cs_robot_description view_cs.launch.py \
+ros2 launch elite_robots_description view_cs.launch.py \
   cs_type:=cs66 \
   tf_prefix:=robot1_ \
   safety_limits:=false
@@ -84,7 +84,7 @@ ros2 launch eli_cs_robot_description view_cs.launch.py \
 编译并加载工作空间环境后，可直接展开 Xacro：
 
 ```bash
-xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_description/urdf/cs.urdf.xacro" \
+xacro "$(ros2 pkg prefix elite_robots_description)/share/elite_robots_description/urdf/cs.urdf.xacro" \
   cs_type:=cs63 \
   name:=cs63 \
   > /tmp/cs63.urdf
@@ -93,7 +93,7 @@ xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_descriptio
 对于 `cs520h`，请使用 5 轴入口文件：
 
 ```bash
-xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_description/urdf_5f/cs.urdf.xacro" \
+xacro "$(ros2 pkg prefix elite_robots_description)/share/elite_robots_description/urdf_5f/cs.urdf.xacro" \
   cs_type:=cs520h \
   name:=cs520h \
   > /tmp/cs520h.urdf
@@ -130,7 +130,7 @@ xacro "$(ros2 pkg prefix eli_cs_robot_description)/share/eli_cs_robot_descriptio
 从工作空间根目录执行：
 
 ```bash
-colcon test --packages-select eli_cs_robot_description
+colcon test --packages-select elite_robots_description
 colcon test-result --verbose
 ```
 
