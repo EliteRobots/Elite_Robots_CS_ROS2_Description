@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(eli_cs_robot_description)
+project(elite_robots_description)
 
 find_package(ament_cmake REQUIRED)
 

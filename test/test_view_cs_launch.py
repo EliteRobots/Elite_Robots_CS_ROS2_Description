@@ -15,7 +15,7 @@ from launch_testing.actions import ReadyToTest
 def generate_test_description():
     launch_include = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(get_package_share_directory("eli_cs_robot_description"), "launch/view_cs.launch.py")
+            os.path.join(get_package_share_directory("elite_robots_description"), "launch/view_cs.launch.py")
         ),
         launch_arguments={"cs_type": "cs63"}.items(),
     )

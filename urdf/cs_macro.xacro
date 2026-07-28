@@ -22,8 +22,8 @@
      - Chen Shichao
   -->
 
-  <xacro:include filename="$(find eli_cs_robot_description)/urdf/inc/cs_transmissions.xacro" />
-  <xacro:include filename="$(find eli_cs_robot_description)/urdf/inc/cs_common.xacro" />
+  <xacro:include filename="$(find elite_robots_description)/urdf/inc/cs_transmissions.xacro" />
+  <xacro:include filename="$(find elite_robots_description)/urdf/inc/cs_common.xacro" />
 
   <xacro:macro name="cs_robot" params="
     name
@@ -74,7 +74,7 @@
 
     <xacro:if value="${generate_ros2_control_tag}">
       <!-- ros2 control include -->
-      <xacro:include filename="$(find eli_cs_robot_description)/urdf/cs.ros2_control.xacro" />
+      <xacro:include filename="$(find elite_robots_description)/urdf/cs.ros2_control.xacro" />
       <!-- ros2 control instance -->
       <xacro:cs_ros2_control
         name="${name}"
